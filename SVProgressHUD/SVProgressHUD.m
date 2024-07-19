@@ -513,7 +513,11 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     // Add the overlay to the application window if necessary
     if(!self.controlView.superview) {
         if(self.containerView){
-            [self.containerView addSubview:self.controlView];
+            if(self.containerView != self.controlView) {
+                [self.containerView addSubview:self.controlView];
+            } else {
+                
+            }
         } else {
 #if !defined(SV_APP_EXTENSIONS)
             [self.frontWindow addSubview:self.controlView];
