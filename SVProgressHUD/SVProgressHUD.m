@@ -395,7 +395,10 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         _maxSupportedWindowLevel = UIWindowLevelNormal;
         
         _hapticsEnabled = NO;
-        _motionEffectEnabled = YES;
+        // Off by default: on iOS 27, clearing the HUD's motion effect (done on every
+        // positionHUD:) has blocked the main thread in
+        // -[_UIMotionEffectEngine _tearDownBodyGroup:] until a 0x8BADF00D watchdog kill.
+        _motionEffectEnabled = NO;
         
         // Accessibility support
         self.accessibilityIdentifier = @"SVProgressHUD";
