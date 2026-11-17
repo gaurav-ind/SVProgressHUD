@@ -178,7 +178,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 @property (assign, nonatomic) BOOL hapticsEnabled;
 
 /// Indicates if motion effects should be applied to the HUD.
-/// @discussion Default: YES.
+/// @discussion Default: NO. Enabling it re-exposes an iOS 27 main-thread hang in UIKit's motion-effect teardown.
 @property (assign, nonatomic) BOOL motionEffectEnabled;
 
 @property (class, strong, nonatomic, readonly, nonnull) NSBundle *imageBundle;
